@@ -1,3 +1,3 @@
 # TsCart
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/[ParitoshDadhich]/[images/websiteImages]/blob/[main]/"home page".jpg?raw=true)
