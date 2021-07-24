@@ -5,6 +5,7 @@
 
 ![image](https://user-images.githubusercontent.com/69232753/126854608-d2bb78ef-eebf-4626-9baa-a9ab34a11169.png)
 
+---
 
 ### Cart Page
 ![image](https://user-images.githubusercontent.com/69232753/126854592-1ee3c92c-5d13-4696-9dda-56c1ba46706e.png)
