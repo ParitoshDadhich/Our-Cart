@@ -52,8 +52,8 @@ var userSchema = new mongoose.Schema({
 
 // virtual filed creation
 userSchema.virtual("password")
-    .set(function(password){        // Question
-                                    // yaha par password kaha se aaya??
+    .set(function(password){         
+    
         this._password = password;
         this.salt = uuidv1();
         this.encry_password = this.securePassword(password);
@@ -94,17 +94,3 @@ userSchema.methods = {
 module.exports = mongoose.model("User", userSchema);
 
 
-
-
-
-
-
-
-//  MISTAKES
-/*
-    1. In the securePassword method, in try, when I was returning the encrypted password I did not use crypto word
-    I simply return createHmax..... but not crypto.createHmac......
-    The reason was I was learning and simply paste the code from documents and did not use crypto....
-    Once the userSchema desing part was done and I was reviewing my code then noticed crypto word was not used(pata aisa laga ki vo chamak nahi raha tha, jo unused variable hota hai na vo chamakte nahi hai)
-    then I debug the code and removed the error.
-*/
