@@ -50,5 +50,4 @@ const productSchema = new mongoose.Schema({
 }, {timestamps: true}
 );
  
-module.exports = mongoose.model("Product", productSchema);      // Question
-                                                                // module.eports kar rahe hai, ye export kaha karte hai?
+module.exports = mongoose.model("Product", productSchema);       
