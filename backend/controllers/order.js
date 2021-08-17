@@ -19,8 +19,8 @@ exports.getOrderById = (req, res, next, id) =>{
 // creating order
 exports.createOrder = (req, res) =>{
     req.body.order.user = req.profile;          // this profile is being populated by param getUserById in the routes folder in order.js file
-                                            // Question
-                                            // sab kuch req.profile me kaise aa jata hai?    
+                                            
+    
     const order = new Order(req.body.order);
     order.save((err, order) =>{     // since order is a mongoose object so we can use .save()
         if(err){
