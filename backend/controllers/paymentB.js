@@ -1,4 +1,4 @@
-// here braintree is a payment gateway
+ 
 const braintree = require("braintree");
 
 const gateway = new braintree.BraintreeGateway({
@@ -11,7 +11,7 @@ const gateway = new braintree.BraintreeGateway({
 
 exports.getToken = (req, res) => {
     gateway.clientToken.generate({}, function(err, response) {
-        // pass clientToken to your front-end
+      
         if(err){
             res.status(500).send(err);
         } else{
@@ -26,7 +26,7 @@ exports.processPayment = () => {
     let amountFromTheClient = req.body.amount;
 
     gateway.transaction.sale({
-        // the amount and the paymentMethodNonce are mentioned in the documenetation
+      
         amount: amountFromTheClient,
         paymentMethodNonce: nonceFromTheClient,
         options: {
