@@ -67,7 +67,7 @@ exports.updateCategory = (req, res) => {
         }
         res.json(updateCategory);
     })
-}
+ }
 
 
 
