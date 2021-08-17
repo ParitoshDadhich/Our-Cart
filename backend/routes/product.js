@@ -58,6 +58,6 @@ router.get("/products/categories", getAllUniqueCategories);     // route for get
 
 
 
-module.exports = router;
+ module.exports = router;
 
 
