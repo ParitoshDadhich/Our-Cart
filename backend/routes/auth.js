@@ -32,16 +32,6 @@ router.post("/signin", [
 router.get("/signout", signout);
 
 
-// router.get("/testroute", isSignedIn, (req, res) =>{
-//     res.json(req.auth);
-//     // if we run the url without isSigniedIn then it will give us a "a protected route"
-//     // but it we use isSignedIn, a middleware, then it will show the correct output i.e. UnauthorizedError: No authorization token was found<br> &nbsp; &nbsp;at middleware 
-//     // the correct output or result i.e. UnauthorizedError we get only because of express-jwt milddleware which we used in auth.js file inside the controller folder
-//     // the reason behind the UnauthorizedError is we are not using bearer token, if we use bearer toekn then we no longer ger UnauthorizedError.
-// });
-
-
-
 // throwing all the files which I am creating inside this file to outside the file
 module.exports = router;
 
