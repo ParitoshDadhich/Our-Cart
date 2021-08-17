@@ -9,8 +9,7 @@ exports.getCategoryById = (req, res, next, id) => {
                 error: "Category not found"
             });
         }
-        req.category = category;    // QUESTION
-                                    //- req.category kaha se aaya? AND WHAT WE ARE DOING HERE?
+        req.category = category;     
         next();
     })
 };
