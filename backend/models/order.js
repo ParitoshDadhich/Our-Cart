@@ -9,8 +9,8 @@ const { ObjectId } = mongoose.Schema;
 const ProductCartSchema = new mongoose.Schema({
     product: {
         type: ObjectId,         // Based on product model
-        ref: "Product"          // Question
-                                // agar ye Product ko refer kar raha hai to jitni bhi properties hai product.js file me sabko access kar sakta hai kya??
+        ref: "Product"          
+        
     },
 
     name: String,
@@ -18,8 +18,7 @@ const ProductCartSchema = new mongoose.Schema({
     price: Number
 })
 
-const ProductCart = mongoose.model("ProductCart", ProductCartSchema);   // Question 
-                                                                        //    what if ProductCart differnt liya ho declaration and mongoose.moldel()??
+const ProductCart = mongoose.model("ProductCart", ProductCartSchema);  
 
 
 // order_schema
