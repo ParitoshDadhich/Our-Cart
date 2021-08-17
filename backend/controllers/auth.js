@@ -22,9 +22,8 @@ exports.signup = (req, res) => {
     }
 
     // HERE I created a user object form the User model
-    const user = new User(req.body);        // Question?
-                                            // What is req.body? Koi inbuilt property hoti hai ya kuch aur hai?? 
-
+    const user = new User(req.body);         
+  
     user.save((err, user) => {  // by writing user.save() we have saved the user in the database
         if(err){                // we want to provide some response back, so that people know the user is successfully saved or not. In order to do the same I am firing a callback function which give the result which we want
             return res.status(400).json({
@@ -82,8 +81,8 @@ exports.signin = (req, res) => {
 
         // creting the token with user id and secret
         // that means create a token, put that token into the cookie
-        const token = jwt.sign({_id: user._id}, process.env.SECRET);    // QUESTION?
-                                                                        // user._id kaha se aayi??
+        const token = jwt.sign({_id: user._id}, process.env.SECRET);     
+      
         // put token in cookie
         res.cookie("token", token, {expire: new Date() + "9999"});
 
@@ -115,9 +114,8 @@ exports.signout = (req, res)=>{
 exports.isSignedIn = expressJwt({
     secret: process.env.SECRET,
     userProperty: "auth"    // this property allows by cookieParser. It works on the req one (between req and res);
-    // A question arries what userProperty is doing here and what's present inside "auth"?
-    // this middleware i.e. isSignedIn put the "auth" into the request, which can be used further. 
-    // auth contains _id, which we got at the time of loggedIn.
+     
+  
 })
 
 
@@ -128,9 +126,9 @@ exports.isAuthenticated = (req, res, next) => {
     // req.profile - set up from the front-end
     // req.auth - set up by isSignedIn middleware
     // req.profile._id == req.auth._id, if this action comes out to be true that means user can change things into his own account
-    let checker = req.profile && req.auth && req.profile._id == req.auth._id;       //  QUESTION?
-                                                                                    // What is req.profile? ans what is the difference between req.profile and req.body?
-                                                                                    // sari cheeze req.body and req.profile se kase aur kyu access kar late hai??
+    let checker = req.profile && req.auth && req.profile._id == req.auth._id;      
+  
+  
     if(!checker){
         return res.status(403).json({
             error: "ACCESS DENIED"
@@ -150,24 +148,4 @@ exports.isAdmin = (req, res, next) => {
     next();
 };
 
-/*
-
-    FUNCTIONS WHICH WE USED EARLIER FOR TESTING PURPOSE
-
-
-    // exproting signup function
-exports.signup = (req, res) => {
-    // in the app.js file we mentioned a middleware bodyParser.json(), so anything that is comming up in the json we can access it
-    // eg - can access by using "req.body"
-    
-        // Note-
-        // if in case we want to access the data of urlEncoded type
-        // then in the middleware instead of bodyParser.json() use urlEncoded, Must refer documention if in case you find any error
-    
-        console.log("REQ BODY", req.body);
-        res.json({
-            message: "Signup route works!"
-        });
-    };
-    
-*/
+ 
