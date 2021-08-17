@@ -54,8 +54,7 @@ exports.createProduct = (req, res) => {
             });
         }
 
-        let product = new Product(fields);                  // QUESTION?
-                                                            // What's the significance of this line
+        let product = new Product(fields);                   
 
 
         // handle files here
@@ -67,8 +66,7 @@ exports.createProduct = (req, res) => {
             }
             product.photo.data = fs.readFileSync(file.photo.path);  // assignig the path of the photo
 
-            //  QUESTION?
-            //  What's the significance of Content type?
+            
             product.photo.contentType = file.photo.type;    // assigning the content type of the photo
         }
         //console.log(product);
@@ -121,18 +119,7 @@ exports.deleteProduct = (req, res) =>{
 };
 
 
-// update controllers
-
-/*
-    PLAN
-    Just like we have all the fields in the UI to save a product, 
-    similarly we are going to have a similar UI for updation of the product.
-
-    What we will do?
-    As soon as the updation page will load, we are going to pull up the information from the database, fill up all the fields with that information
-    and as soon as user hits to save, we are going to perform a save operation on top of that.
-    So the same product is getting from the database and same product is getting saved there
-*/
+ 
 
 
 exports.updateProduct = (req, res) => {
@@ -146,35 +133,11 @@ exports.updateProduct = (req, res) => {
                 error: "problem with the image!"
             });
         }
-
-        //  HERE I AM NOT DESTRUCTRUING THE FIELDS OR ADDING SOME RESTRICTIONS
-        // THE REASON IS DURING THE UPDATING PROCESS, TO INCLUDE THE ALL THE FIELDS IS NOT MANDATORY
-        // ITS USER CHOICE, HE IS WILLING TO UPDATE WHICH FIELD 
-/*        
-        // destructure the fields
-        const {name, description, price, category, stock} = fields;
-        
-        // adding some restrictions
-        if(
-            !name ||
-            !description ||
-            !price ||
-            !category ||
-            !stock
-        ) {
-            return res.status(400).json({
-                error: "Please include all fields!"
-            });
-        }
-*/
-
+ 
 
 
         // updation code
-        let product = req.product;  // how we are able to grab req.product?
-                                    /*
-                                      In the put route, we are getting the productId, as soon as it sees the productId the params will fire up and we hold this up here  
-                                      */
+        let product = req.product;   
 
         // we are using loadash here    // these fields are going to update in the product
         product = _.extend(product, fields)    // it updates the value 
@@ -206,21 +169,10 @@ exports.updateProduct = (req, res) => {
 
 // product listing
 exports.getAllProducts = (req, res) => {
-    /*
-        req.query.limit
-        If there is a query from the frontend and it has a property of .limit then we can use a ternary operator
-        why we are using parseInt?
-        Whenever we are taking any parameter from users, javaScript handles that parameter as a string value. So convering it into integer.
-    */
+    
     let limit = req.query.limit ? parseInt(req.query.limit) : 8;
     let sortBy = req.query.sortBy ? req.query.sortBy : "_id";       // Here I am giving a previledge of sorting to user, on which bases he or she wants to sort the products
-
-/*
-        what are the things which you want to select like name, email, description, price and all
-        NOTE
-        Either we can mention all the fieds separately which we want to select
-        or we can use "-", here minus shows I dont't want to select this item.
-*/
+ 
 
 
     Product.find()
