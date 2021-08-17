@@ -31,10 +31,7 @@ mongoose.connect(process.env.DATABASE, {    // process is where all the attach n
     console.log("DB CONNECTED");
 });
 
-//myFun.run().then().catch()
-// then() function executes when there is a success i.e. run() or connect() runs successfully
-// catch() functions runs when there are errors handeling the stuff
-
+ 
 
 
 // middlewares
