@@ -61,20 +61,3 @@ router.get("/products/categories", getAllUniqueCategories);     // route for get
 module.exports = router;
 
 
-
-
-
-
-// Note 
-/*
-    we can remove the router.get("/product/photo/:productId", photo); and alse need not to write another middleware photo for displaying the photo in the background.
-    and still can get the same result by removing req.product.photo = undefined;
-    exports.getProduct = (req, res) => {
-    //req.product.photo = undefined;  // we are undefining the photo part because files of photos are bulky and tricky to grab from the database. So we are simply undefining it so that it can retrun get request rapidly
-    return res.json(req.product);
-}
-
-    the only difference which will make is that system slow ho jayega
-    and on the other hand if we undefined it and write another middleware and use get request in the routes folder for displaying the photo then fastly sab kuch hoga delay nahi hoga display hone me
-
-*/
